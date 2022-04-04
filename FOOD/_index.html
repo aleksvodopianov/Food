@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="iconsfonts/iconsfont.min.css?_v=20220405015258" type="text/css" />
+    <!-- <link rel="stylesheet" href="iconsfonts/webfonts/*.woff2?_v=20220405015258" /> -->
+    <link rel="stylesheet" href="css/style.min.css?_v=20220405015258" type="text/css" />
+    <title>Главная</title>
+    <style>
+        @font-face {
+        font-family: NewBaskervilleStd Bold;
+        font-display: swap;
+        src: url("../fonts/NewBaskervilleStd Bold.woff2") format("woff2"), url("../fonts/NewBaskervilleStd Bold.woff") format("woff"), url("../fonts/NewBaskervilleStd Bold.ttf") format("truetype");
+        font-weight: 400;
+        font-style: normal;
+        }
+        @font-face {
+        font-family: Roboto;
+        font-display: swap;
+        src: url("../fonts/Roboto-Regular.woff2") format("woff2"), url("../fonts/Roboto-Regular.woff") format("woff"), url("../fonts/Roboto-Regular.ttf") format("truetype");
+        font-weight: 400;
+        font-style: normal;
+        }
+        @font-face {
+        font-family: Roboto;
+        font-display: swap;
+        src: url("../fonts/Roboto-Thin.woff2") format("woff2"), url("../fonts/Roboto-Thin.woff") format("woff"), url("../fonts/Roboto-Thin.ttf") format("truetype");
+        font-weight: 100;
+        font-style: normal;
+        }
+        @font-face {
+        font-family: Roboto;
+        font-display: swap;
+        src: url("../fonts/Roboto-ThinItalic.woff2") format("woff2"), url("../fonts/Roboto-ThinItalic.woff") format("woff"), url("../fonts/Roboto-ThinItalic.ttf") format("truetype");
+        font-weight: 400;
+        font-style: normal;
+        }
+        @font-face {
+            font-family: 'Font Awesome 5 Brands';
+            src: url("../iconsfonts/webfonts/fa-brands-400.woff2") format("woff2"), url("../iconsfont/webfonts/fa-brands-400.woff") format("woff"), url("../iconsfont/webfonts/fa-brands-400.ttf") format("truetype"), url("../iconsfont/webfonts/fa-brands-400.svg#fontawesome") format("svg"); 
+        }
+    </style>
+</head>
+
+    <body>
+        <div id="wrapper">
+            <header>
+    <div class="layout">
+        <div class="logo">
+            <h1>Guess The Number</h1>
+        </div>
+        <nav>
+            <ul>
+                <li>
+                    <a href="#"></a>
+                </li>
+                <li>
+                    <a href="#"></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+            <main class="flex">
+                <div class="layout">
+                    <div id="content">
+                        <picture><source srcset="img/flower.webp" type="image/webp"><img src="img/flower.jpg" alt="flower"></picture>
+                        <p class="content_description flex">We have selected a random number between 1 and 100. See if you can guess it in 10 turns or fewer. We'll tell you if your guess was too high or too low.</p>
+
+                        <div class="form flex">
+                            <label for="guessField">Enter a guess: </label>
+                            <input type="text" id="guessField" class="guessField">
+                            <input type="submit" value="Submit guess" class="guessSubmit">
+                        </div>
+                        <div class="resultParas">
+                            <p class="guesses"></p>
+                            <p class="lastResult"></p>
+                            <p class="lowOrHi"></p>
+                        </div>
+                    </div>
+                    <div id="sidebar"></div>
+                    <div>
+                        <button>CLICK ME</button>
+                    </div>
+                    <aside></aside>
+                </div>
+            </main>
+            <footer class="flex">
+    <div class="layout column">
+        <div class="follow-me">
+            <p>Follow me on other sites:</p>
+        </div>
+        <div class="social_icons">
+            <i class="fab fa-linkedin"></i>
+            <i class="fab fa-github-square"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-facebook-square"></i>
+        </div>
+    </div>
+</footer>
+        </div>
+
+        <script type="module" src="js/app.min.js?_v=20220405015258"></script>
+    </body>
+</html>
