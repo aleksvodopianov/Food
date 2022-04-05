@@ -1,4 +1,10 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap&subset=cyrillic-ext");
+@font-face {
+  font-family: Roboto;
+  font-display: swap;
+  src: url("../fonts/Roboto-Regular.woff2") format("woff2"), url("../fonts/Roboto-Regular.woff") format("woff"), url("../fonts/Roboto-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
 
 .hide {
   display: none;
@@ -17,7 +23,7 @@
 
 @-webkit-keyframes fade {
   from {
-    opacity: 0.2;
+    opacity: 0.3;
   }
 
   to {
@@ -27,7 +33,7 @@
 
 @keyframes fade {
   from {
-    opacity: 0.2;
+    opacity: 0.3;
   }
 
   to {
