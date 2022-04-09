@@ -99,7 +99,8 @@ window.addEventListener('DOMContentLoaded', () => {
     function modal() {
         const modal = document.querySelector('.modal'),
             modalTrigger = document.querySelectorAll('[data-modal]'),
-            modalCloseBtn = document.querySelector('[data-close]');
+            modalCloseBtn = document.querySelector('[data-close]'),
+            scroll = calcScroll();
 
         // btns.forEach(elem => {
         //     elem.addEventListener('click', () => {
@@ -115,12 +116,15 @@ window.addEventListener('DOMContentLoaded', () => {
         const openModalFunction = () => {
             modal.style.display = 'block';
             document.body.style.overflow = 'hidden';
+            document.body.style.marginRight = `${scroll}px`;
+
         };
 
         modalTrigger.forEach((btn) => {
             btn.addEventListener('click', () => {
                 openModalFunction();
                 clearInterval(modalTimer);
+                window.removeEventListener('scroll', showModalByScroll);
             });
         });
 
@@ -129,7 +133,7 @@ window.addEventListener('DOMContentLoaded', () => {
         function showModalByScroll() {
             if (
                 window.pageYOffset + document.documentElement.clientHeight >=
-                document.documentElement.scrollHeight -1
+                document.documentElement.scrollHeight -1 
             ) {
                 openModalFunction();
                 window.removeEventListener('scroll', showModalByScroll);
@@ -139,10 +143,26 @@ window.addEventListener('DOMContentLoaded', () => {
 
         window.addEventListener('scroll', showModalByScroll);
 
+        function calcScroll() {
+            let div = document.createElement('div');
+
+            div.style.width = '50px';
+            div.style.height = '50px';
+            div.style.overflowY = 'scroll';
+            div.style.visibility = 'hidden';
+
+            document.body.appendChild(div);
+            let scrollWidth = div.offsetWidth - div.clientWidth;
+            div.remove();
+
+            return scrollWidth;
+        }
+
         //Modal Off
         const closeModalFunction = () => {
             modal.style.display = 'none';
             document.body.style.overflow = '';
+            document.body.style.marginRight = `0px`;
         };
 
         modal.addEventListener('click', (event) => {
