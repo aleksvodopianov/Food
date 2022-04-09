@@ -3,7 +3,6 @@ import * as flsFunctions from './modules/functions.min.js';
 flsFunctions.isWebp();
 
 window.addEventListener('DOMContentLoaded', () => {
-
     //Timer
     function timer() {
         const deadLine = '2022-05-11';
@@ -16,13 +15,12 @@ window.addEventListener('DOMContentLoaded', () => {
                 seconds = Math.floor((t / 1000) % 60);
 
             return {
-                'total': t,
+                total: t,
                 days,
                 hours,
                 minutes,
-                seconds
+                seconds,
             };
-
         }
 
         function getZero(num) {
@@ -102,7 +100,7 @@ window.addEventListener('DOMContentLoaded', () => {
         const modal = document.querySelector('.modal'),
             modalTrigger = document.querySelectorAll('[data-modal]'),
             modalCloseBtn = document.querySelector('[data-close]');
-        
+
         // btns.forEach(elem => {
         //     elem.addEventListener('click', () => {
         //         let text = event.target.textContent;
@@ -114,24 +112,41 @@ window.addEventListener('DOMContentLoaded', () => {
         // })
 
         //Modal On
-        modalTrigger.forEach(btn => {
+        const openModalFunction = () => {
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        };
+
+        modalTrigger.forEach((btn) => {
             btn.addEventListener('click', () => {
-                // if (event.target && event.target.classList.contains('modal__close')) {
-                modal.style.display = 'block';
-                document.body.style.overflow = 'hidden';            
-
+                openModalFunction();
+                clearInterval(modalTimer);
             });
-        })
+        });
 
+        const modalTimer = setTimeout(openModalFunction, 5000);
+
+        function showModalByScroll() {
+            if (
+                window.pageYOffset + document.documentElement.clientHeight >=
+                document.documentElement.scrollHeight -1
+            ) {
+                openModalFunction();
+                window.removeEventListener('scroll', showModalByScroll);
+                clearInterval(modalTimer);
+            }
+        }
+
+        window.addEventListener('scroll', showModalByScroll);
 
         //Modal Off
         const closeModalFunction = () => {
             modal.style.display = 'none';
             document.body.style.overflow = '';
-        }
-        
+        };
+
         modal.addEventListener('click', (event) => {
-            if(event.target === modal || event.target === modalCloseBtn) {
+            if (event.target === modal || event.target === modalCloseBtn) {
                 closeModalFunction();
             }
         });
@@ -140,9 +155,7 @@ window.addEventListener('DOMContentLoaded', () => {
             if (event.code === 'Escape' && modal.style.display === 'block') {
                 closeModalFunction();
             }
-        })
-
+        });
     }
     modal();
-
 });
