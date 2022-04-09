@@ -35,10 +35,10 @@ window.addEventListener('DOMContentLoaded', () => {
 
         function setClock(selector, endtime) {
             const timer = document.querySelector(selector),
-                days = document.querySelector('#days'),
-                hours = document.querySelector('#hours'),
-                minutes = document.querySelector('#minutes'),
-                seconds = document.querySelector('#seconds'),
+                days = timer.querySelector('#days'),
+                hours = timer.querySelector('#hours'),
+                minutes = timer.querySelector('#minutes'),
+                seconds = timer.querySelector('#seconds'),
                 timeInterval = setInterval(updateClock, 1000);
 
             updateClock();
@@ -97,8 +97,52 @@ window.addEventListener('DOMContentLoaded', () => {
     }
     tabs();
 
+    //Modal
+    function modal() {
+        const modal = document.querySelector('.modal'),
+            modalTrigger = document.querySelectorAll('[data-modal]'),
+            modalCloseBtn = document.querySelector('[data-close]');
+        
+        // btns.forEach(elem => {
+        //     elem.addEventListener('click', () => {
+        //         let text = event.target.textContent;
+        //         if (text == 'Связаться с нами') {
+
+        //         modal.classList.toggle('show');
+        //         document.body.style.overflow = 'hidden';
+        //     })
+        // })
+
+        //Modal On
+        modalTrigger.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // if (event.target && event.target.classList.contains('modal__close')) {
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';            
+
+            });
+        })
 
 
+        //Modal Off
+        const closeModalFunction = () => {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+        
+        modal.addEventListener('click', (event) => {
+            if(event.target === modal || event.target === modalCloseBtn) {
+                closeModalFunction();
+            }
+        });
 
+        document.addEventListener('keydown', (event) => {
+            if (event.code === 'Escape' && modal.style.display === 'block') {
+                closeModalFunction();
+            }
+        })
+
+    }
+    modal();
 
 });
